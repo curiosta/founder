@@ -56,6 +56,47 @@
     return top;
   }
 
+  // GAP link and the optional SOAR worksheet for the target (best-fit) level. Everything typed stays on the page:
+  // nothing is sent, stored or saved; it disappears on reload.
+  var SOAR = [['s', 'Strengths'], ['o', 'Opportunities'], ['a', 'Aspirations'], ['r', 'Results']];
+  function planBlock(l, sid) {
+    if (!cfg.soar || !l) return '';
+    var L = cfg.levels[l], P = cfg.soar.levels[l], S = sid ? cfg.sublevels[sid] : null;
+    var asp = 'Build a level ' + l + ' (' + L.name.toLowerCase() + ') business' + (S ? ', starting as ' + sid + ' ' + S.name.charAt(0).toLowerCase() + S.name.slice(1) : '') + '.';
+    var h = '<section class="se-plan" aria-labelledby="se-plan-h"><h3 id="se-plan-h">Plan the climb to level ' + l + '</h3>' +
+      '<p>Compare where you are today with your target, rung by rung: <a href="' + esc(cfg.gap_page) + '#gap-level-' + l + '">GAP analysis for level ' + l + '</a>.</p>' +
+      '<details class="se-soar" id="se-soar"><summary>Optional: a SOAR worksheet for level ' + l + '</summary>' +
+      '<p class="small">SOAR stands for strengths, opportunities, aspirations and results. Write a few lines under each. It all stays on this page: nothing you type is sent or saved, and it is gone when you leave or reload. <a href="' + esc(cfg.soar.page) + '">What SOAR is</a>.</p>';
+    SOAR.forEach(function (x) {
+      var hint = x[0] === 'a' ? cfg.soar.aspirations_hint : P[x[0]];
+      h += '<label for="soar-' + x[0] + '">' + x[1] + '</label><p class="se-hint" id="soar-' + x[0] + '-hint">' + esc(hint) + '</p>' +
+        '<textarea id="soar-' + x[0] + '" aria-describedby="soar-' + x[0] + '-hint" rows="3">' + (x[0] === 'a' ? esc(asp) : '') + '</textarea>';
+    });
+    h += '<p><button type="button" class="btn se-soar-make">Make my SOAR summary</button> <button type="button" class="btn btn-ghost se-soar-copy" hidden>Copy the summary</button></p>' +
+      '<div class="se-soar-out" id="soar-out" role="status" hidden></div></details></section>';
+    return h;
+  }
+  function wireSoar(l) {
+    var box = result.querySelector('.se-soar');
+    if (!box) return;
+    var out = box.querySelector('.se-soar-out'), copy = box.querySelector('.se-soar-copy');
+    box.querySelector('.se-soar-make').addEventListener('click', function () {
+      var lines = ['My SOAR for level ' + l + ': ' + cfg.levels[l].name, ''];
+      SOAR.forEach(function (x) {
+        var v = box.querySelector('#soar-' + x[0]).value.trim();
+        lines.push(x[1].toUpperCase(), v || '(not filled in yet)', '');
+      });
+      out.textContent = lines.join('\n').trim();
+      out.hidden = false;
+      copy.hidden = !(navigator.clipboard && navigator.clipboard.writeText);
+    });
+    copy.addEventListener('click', function () {
+      var t = out.textContent;
+      var done = function () { copy.textContent = 'Copied'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function () {});
+    });
+  }
+
   function render(a) {
     var pts = score(a);
     var order = [1, 2, 3, 4].sort(function (x, y) { return pts[y] - pts[x] || x - y; });
@@ -95,6 +136,7 @@
         '<p class="se-links"><a href="' + esc(L.page) + '">The ' + esc(L.name.toLowerCase()) + ' level</a> &middot; <a href="' + esc(L.hub) + '">Business math</a> &middot; <a href="' +
         esc(L.article) + '">' + esc(L.article_title) + '</a></p></div>';
     });
+    html += planBlock(best[0], subIds[0]);
     html += '<p class="small muted">This is a guide to your wishes, not a verdict. Many people climb the ladder one level at a time.</p>';
     html += '<p><button type="button" class="btn se-again">Change my answers</button></p>';
     result.innerHTML = html;
@@ -102,6 +144,7 @@
     result.dataset.best = best.join(',');
     result.dataset.runner = runner.join(',');
     result.dataset.sub = subIds.join(',');
+    wireSoar(best[0]);
     result.querySelector('.se-again').addEventListener('click', function () { form.scrollIntoView({ behavior: 'smooth' }); });
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
