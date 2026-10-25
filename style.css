@@ -203,6 +203,15 @@ h2[id],h3[id]{scroll-margin-top:100px}
 .example > p:first-child,.note > p:first-child{margin-top:0}
 .example > :last-child,.note > :last-child{margin-bottom:0}
 .tag-hyp{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--ink);border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:2px}
+.tag-model,.tag-unv,.tag-ver{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:2px;white-space:nowrap}
+.tag-model{background:var(--sea-700);color:#fff}
+.tag-unv{background:var(--accent-soft);color:var(--accent);border:1px solid #f1cfb3}
+.tag-ver{background:#fff;color:var(--sea-700);border:1px solid var(--sea-500)}
+.model-note,.limits{border-radius:12px;padding:14px 20px;margin:1.5em 0;font-size:.98rem;background:#fff;border:1px solid var(--line);border-left:5px solid var(--sea-500)}
+.model-note > :first-child,.limits > :first-child{margin-top:0}
+.model-note > :last-child,.limits > :last-child{margin-bottom:0}
+.limits h2,.limits h3{font-size:1.05rem;margin:0 0 .5em}
+.limits ul{margin:.4em 0 .4em 1.2em;padding:0}
 .formula{font-family:var(--serif);font-size:1.15rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;text-align:center;margin:1.2em 0}
 .after{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
 .next-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px}

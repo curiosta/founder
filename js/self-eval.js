@@ -137,7 +137,7 @@
         esc(L.article) + '">' + esc(L.article_title) + '</a></p></div>';
     });
     html += planBlock(best[0], subIds[0]);
-    html += '<p class="small muted">This is a guide to your wishes, not a verdict. Many people climb the ladder one level at a time.</p>';
+    html += '<p class="model-note"><span class="tag-model">Manoj\'s model</span> <strong>Target level, not validated.</strong> This is the level your answers point to on Manoj\'s four-level model. It is based on that model and has not been validated: it is a guide to your wishes, not a verdict. Staying at a level you like is a good result; the ladder is not a rule that everyone should climb.</p>';
     html += '<p><button type="button" class="btn se-again">Change my answers</button></p>';
     result.innerHTML = html;
     result.hidden = false;
