@@ -547,6 +547,16 @@ h2[id],h3[id]{scroll-margin-top:100px}
 .fw-grid ul{margin:0;padding-left:1.1em}
 @media (max-width:560px){.fw-grid{grid-template-columns:1fr}}
 .fw-origin{border-left:4px solid var(--sea-500);background:#fff;padding:.7em 1em;border-radius:0 12px 12px 0}
+/* Maslow: needs as steps (a list; stacked bottom-up with CSS, read 1 to 5) */
+.needs-fig{margin:1.6em 0;padding:1em;background:#fff;border:1px solid var(--line);border-radius:12px}
+.needs-steps{list-style:none;margin:0 auto;padding:0;display:flex;flex-direction:column-reverse;gap:6px;max-width:34rem}
+.needs-steps li{margin:0 auto;padding:.55em .8em;background:var(--teal-soft);color:var(--ink);border:1px solid var(--sea-500);border-radius:8px;text-align:center;font-weight:700}
+.needs-steps li:nth-child(1){width:100%}
+.needs-steps li:nth-child(2){width:90%}
+.needs-steps li:nth-child(3){width:80%}
+.needs-steps li:nth-child(4){width:70%}
+.needs-steps li:nth-child(5){width:62%}
+.needs-fig figcaption{margin-top:.9em;font-size:.92rem;color:var(--ink-2)}
 /* SOAR worksheet on the self-evaluation result */
 .se-soar{margin:1.6em 0;padding:1em 1.1em;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 .se-soar summary{cursor:pointer;font-weight:700;font-size:1.08rem;min-height:44px;display:flex;align-items:center}
