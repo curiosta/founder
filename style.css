@@ -196,13 +196,13 @@ h2[id],h3[id]{scroll-margin-top:100px}
 .prose table{width:100%;border-collapse:collapse;margin:1.2em 0 1.6em;font-size:.94rem;background:#fff;display:block;overflow-x:auto}
 .prose th,.prose td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 .prose th{background:var(--sand);font-weight:700}
-@media (max-width:420px){.prose th,.prose td{padding:8px 7px}}
+@media (max-width:420px){.prose th,.prose td{padding:8px 7px}.fw-wide table{font-size:.85rem}.fw-wide th,.fw-wide td{overflow-wrap:break-word}}
 .note,.example{border-radius:12px;padding:16px 20px;margin:1.5em 0;font-size:.98rem}
 .note{background:var(--accent-soft);border:1px solid #f1cfb3}
 .example{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold)}
 .example > p:first-child,.note > p:first-child{margin-top:0}
 .example > :last-child,.note > :last-child{margin-bottom:0}
-.tag-hyp{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--ink);border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:2px}
+.tag-hyp,.tag-sug{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--ink);border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:2px}
 .tag-model,.tag-unv,.tag-ver{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:2px;white-space:nowrap}
 .tag-model{background:var(--sea-700);color:#fff}
 .tag-unv{background:var(--accent-soft);color:var(--accent);border:1px solid #f1cfb3}
@@ -656,3 +656,23 @@ h2[id],h3[id]{scroll-margin-top:100px}
 .ibp-wrap code{font-family:var(--mono);font-size:.88em}
 @media (max-width:640px){.ibp-harm,.ibp-method,.ibp-suggest{padding:16px 14px}}
 @media print{.ibp-filters{display:none}}
+
+/* Books founders recommend, Founder habits: cards and lists built from the datasets (tools/founder_picks.py) */
+.fp-page .dek{max-width:60ch}
+.pk-list{list-style:none;margin:1em 0;padding:0}
+.prose .pk-list{padding-left:0}
+.pk{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 20px 8px;margin:0 0 16px}
+.pk h3{margin:0 0 .2em;font-size:1.2rem}
+.pk-rank{display:inline-block;min-width:2.2em;margin-right:6px;font-family:var(--mono);font-size:.85rem;font-weight:700;color:var(--ink);background:var(--sand);border:1px solid var(--line);border-radius:6px;padding:0 6px;text-align:center;vertical-align:2px}
+.pk-meta{margin:0 0 .6em;color:var(--ink-2);font-size:.95rem}
+.pk-src{margin:.6em 0 1em}
+.pk-src summary,.pk-all summary{cursor:pointer;font-weight:600}
+.pk-src ul{margin:.5em 0 0;padding-left:1.1em}
+.pk .limits{margin:1em 0 .8em}
+.tag-sug+strong{margin-left:2px}
+.fp-page section{margin:1.8em 0}
+.fp-page section h4{margin:1em 0 .3em;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.fp-page section h3{font-size:1.3rem}
+.fp-people{columns:2;column-gap:2em}
+@media(max-width:640px){.fp-people{columns:1}.pk{padding:12px 14px 6px}}
+@media (max-width:640px){.fw-wide table{display:table;table-layout:auto}.fw-wide th,.fw-wide td{overflow-wrap:anywhere}}
